@@ -1,0 +1,17 @@
+h1
+{
+    color: white;
+    background-color: cadetblue;
+    border-radius: 17px;
+    box-shadow:rgb(from balck r g b);
+    padding: 3%;
+    transition: 0.2s ;
+}
+
+
+h1:hover
+{
+    color: cadetblue;
+    background-color: white;
+}
+
