@@ -16,4 +16,6 @@ class post(models.Model):
     created_data = models.TimeField(auto_now_add=True)
     Updated_data = models.TimeField(auto_now=True)    
 
+    def __str__(self):
+        return f" {self.id}) {self.titel}"
     
