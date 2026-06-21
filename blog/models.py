@@ -1,10 +1,11 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 
 class post(models.Model):
-    #auther
+    
+    aother = models.ForeignKey( User , on_delete=models.SET_NULL , null=True)
     titel = models.CharField(max_length=220)
     contact = models.TextField()
     # tag
