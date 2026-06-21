@@ -17,5 +17,5 @@ class post(models.Model):
     Updated_data = models.TimeField(auto_now=True)    
 
     def __str__(self):
-        return f" {self.id}) {self.titel}"
+        return f"{self.titel}"
     

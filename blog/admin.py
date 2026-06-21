@@ -8,4 +8,5 @@ class postAdmin(admin.ModelAdmin):
     list_display = ['titel','counted_viow','status' , 'created_data' , 'published_data']
     search_fields = ['titel' , 'contact']
     list_filter = ['status']
-    empty_valu_display = '-empty-'
+    empty_value_display = '-empty-'
+    readonly_fields = ('created_data', 'Updated_data')
