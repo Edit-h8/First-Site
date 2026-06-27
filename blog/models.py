@@ -2,6 +2,12 @@ from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
 
+class category(models.Model):
+    name = models.CharField( max_length=220)
+
+    def __str__ (self):
+        return self.name
+    
 
 class post(models.Model):
     
@@ -9,13 +15,13 @@ class post(models.Model):
     titel = models.CharField(max_length=220)
     contact = models.TextField()
     # tag
-    # category
-
+    category = models.ManyToManyField(category)
     counted_viow = models.IntegerField(default=0)
     status = models.BooleanField(default=False)
     published_data = models.TimeField(null=True)
     created_data = models.TimeField(auto_now_add=True)
     Updated_data = models.TimeField(auto_now=True)    
+    image = models.ImageField(upload_to='blog/' , default='blog/default.jpg')
 
     def __str__(self):
         return f"{self.titel}"
