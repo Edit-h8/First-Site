@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from blog.models import post
 from Website.models import Coment
+from Website.forms import Coment_form
+from django.http import HttpResponse
 # Create your views here.
 
 
@@ -21,19 +23,14 @@ def about(request):
 def test(request):
 
     if request.method == "POST":
-        name = request.POST.get("name")
-        email = request.POST.get("email")
-        subject = request.POST.get("subject")
-        message = request.POST.get("message")
+        form = Coment_form(request.POST)
 
-        print(name +"\n"+ email +"\n"+ subject +"\n"+ message)
-
-        c = Coment()
-        c.name = name
-        c.email = email
-        c.subject = subject
-        c.message = message
-        c.save()
+        if form.is_valid():
+            form.save()
+            return HttpResponse("done!")
+        else :
+            HttpResponse("is not Valid !")
         
+    form = Coment_form()    
 
-    return render(request, "test.html")
+    return render(request, "test.html" , {'form' : form})
