@@ -11,17 +11,17 @@ class category(models.Model):
 
 class post(models.Model):
     
-    aother = models.ForeignKey( User , on_delete=models.SET_NULL , null=True)
+    # tag
+    aother = models.ForeignKey( User , on_delete=models.CASCADE )
     titel = models.CharField(max_length=220)
     contact = models.TextField()
-    # tag
     category = models.ManyToManyField(category)
     counted_viow = models.IntegerField(default=0)
     status = models.BooleanField(default=False)
-    published_data = models.TimeField(null=True)
-    created_data = models.TimeField(auto_now_add=True)
-    Updated_data = models.TimeField(auto_now=True)    
+    published_data = models.DateTimeField( auto_now=False, auto_now_add=False , null= True)
     image = models.ImageField(upload_to='blog/' , default='blog/default.jpg')
+    created_data = models.DateTimeField(auto_now_add=True)
+    Updated_data = models.DateTimeField(auto_now=True)   
 
     def __str__(self):
         return f"{self.titel}"

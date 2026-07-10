@@ -8,6 +8,5 @@ class postAdmin(admin.ModelAdmin):
     search_fields = ['titel' , 'contact']
     list_filter = ['status' , 'aother']
     empty_value_display = '-empty-'
-    readonly_fields = ('created_data', 'Updated_data')
 
 admin.site.register(category)

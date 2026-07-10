@@ -1,12 +1,41 @@
-<!doctype html>
-<html>
-    <head>
-        <title>
-            Directory
-        </title>
-    </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test page</title>
+</head>
 
-    <body>
-        <p>{{elment.titel}}</p>
-    </body>
+
+<body>
+
+    <form method="post" action="{% url 'website:test' %}">
+        {% csrf_token %}
+
+        <label>name :</label>
+        <input type="text" name="name">
+
+        <br><br>
+
+        <label>email :</label>
+        <input type="email" name="email">
+
+        <br><br>
+        
+        <label>subject :</label>
+        <input type="text" name="subject">
+
+        <br><br>
+        
+        <label>message :</label>
+        <input type="text" name="message">
+
+        <br><br><br>
+
+        <button type="submit">submit</button>
+
+    </form>
+
+
+</body>
 </html>
