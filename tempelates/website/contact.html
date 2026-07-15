@@ -27,8 +27,8 @@
             <span class="lnr lnr-home"></span>
           </div>
           <div class="contact-details">
-            <h5>Binghamton, New York</h5>
-            <p>4343 Hinkle Deegan Lake Road</p>
+            <h5>Arak , Farmahin</h5>
+            <p>Farmahin , university ring</p>
           </div>
         </div>
         <div class="single-contact-address d-flex flex-row">
@@ -36,8 +36,8 @@
             <span class="lnr lnr-phone-handset"></span>
           </div>
           <div class="contact-details">
-            <h5>00 (958) 9865 562</h5>
-            <p>Mon to Fri 9am to 6 pm</p>
+            <h5>(+98) 0919 743 8626</h5>
+            <p>Sat to Wen 9 am to 6 pm</p>
           </div>
         </div>
         <div class="single-contact-address d-flex flex-row">
@@ -45,7 +45,7 @@
             <span class="lnr lnr-envelope"></span>
           </div>
           <div class="contact-details">
-            <h5>support@colorlib.com</h5>
+            <h5>kopi.nakn27@gmail.com</h5>
             <p>Send us your query anytime!</p>
           </div>
         </div>
@@ -53,10 +53,10 @@
       <div class="col-lg-8">
         <form
           class="form-area contact-form text-right"
-          id="myForm"
-          action="{% static 'mail.php' %}"
+          action="{% url 'website:contact' %}"
           method="post"
         >
+        {% csrf_token %}
           <div class="row">
             <div class="col-lg-6 form-group">
               <input
@@ -102,7 +102,7 @@
             </div>
             <div class="col-lg-12">
               <div class="alert-msg" style="text-align: left"></div>
-              <button class="genric-btn primary" style="float: right">
+              <button type="submit" class="genric-btn primary" style="float: right">
                 Send Message
               </button>
             </div>
@@ -112,6 +112,52 @@
     </div>
   </div>
 </section>
+
+
+
+<!-- دست کاری خودم -->
+<style>
+  .popup
+  {
+    cursor: pointer;
+    margin : auto auto ;
+    
+  }
+
+  .toast-success {
+    background: #28a745 !important;
+    
+}
+
+.toast-error {
+    background: #dc3545 !important;
+}
+</style>
+
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+
+
+
+
+  {% if messages %}
+  <script>
+    {% for message in messages %}
+      Toastify({
+        text:"{{message}}",
+        className:"toast-{{message.tags}}",
+        duration: 1500
+        
+      }).showToast();
+    {% endfor %}
+  </script>
+  {% endif %}
+
+
 <!-- End contact-page Area -->
+
 
 {% endblock body %}

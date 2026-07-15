@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from blog.models import post
-from Website.models import Coment
 from Website.forms import Coment_form
-from django.http import HttpResponse
+from django import http
+from django.contrib import messages
 # Create your views here.
 
 
@@ -13,7 +13,18 @@ def home(request):
 
 
 def contact(request):
-    return render(request, "website/contact.html")
+    if request.method == "POST":
+        form = Coment_form(request.POST)
+        
+        if form.is_valid():
+            form.save()
+            messages.add_message(request , messages.SUCCESS , "your message Accept successfuly!")
+        
+        else : 
+            messages.add_message(request , messages.ERROR , "your message Do Not Accept !")
+    
+    form = Coment_form()
+    return render(request, "website/contact.html" , {'form' : form})
 
 
 def about(request):
@@ -27,9 +38,9 @@ def test(request):
 
         if form.is_valid():
             form.save()
-            return HttpResponse("done!")
+            return http.HttpResponse("done!")
         else :
-            HttpResponse("is not Valid !")
+            http.HttpResponse("is not Valid !")
         
     form = Coment_form()    
 

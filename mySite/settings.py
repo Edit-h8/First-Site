@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    'robots',
     'Website.apps.WebsiteConfig',
     'blog.apps.BlogConfig'
 ]
@@ -52,6 +56,13 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'mySite.urls'
+
+# site FreamWork
+SITE_ID = 2
+
+# robots
+ROBOTS_USE_SITEMAP = False
+ROBOTS_USE_HOST = False
 
 TEMPLATES = [
     {
